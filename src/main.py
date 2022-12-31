@@ -100,10 +100,6 @@ class Caller(Thread):
         return choice([True, False])
 
 
-operators = []
-callers = Queue()
-
-
 def initialize_operators(file):
     number_of_operators = int(file.readline().strip())
 
@@ -141,4 +137,9 @@ def simulate_call_center():
 
 
 if __name__ == '__main__':
+    global operators, callers
+    
+    operators = []
+    callers = Queue()
+
     simulate_call_center()
