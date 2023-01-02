@@ -124,9 +124,6 @@ def start_operators():
     for operator in operators:
         operator.start()
 
-    for operator in operators:
-        operator.join()
-
 
 def simulate_call_center():
     with open('./data/input.txt', 'r') as input_file:
@@ -138,7 +135,7 @@ def simulate_call_center():
 
 if __name__ == '__main__':
     global operators, callers
-    
+
     operators = []
     callers = Queue()
 
