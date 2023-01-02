@@ -1,5 +1,6 @@
-from threading import Thread
+import sys
 from time import sleep
+from threading import Thread
 from random import choice
 from queue import Queue
 
@@ -100,15 +101,15 @@ class Caller(Thread):
         return choice([True, False])
 
 
-def initialize_operators(file):
-    number_of_operators = int(file.readline().strip())
+def initialize_operators(input_file):
+    number_of_operators = int(input_file.readline().strip())
 
     for operator_index in range(1, number_of_operators + 1):
         operators.append(Operator(f'Operator {operator_index}'))
 
 
-def initialize_callers(file):
-    for line in file:
+def initialize_callers(input_file):
+    for line in input_file:
         caller_info = line.strip().split(" ")
 
         # gets the caller's name and their call category
@@ -125,8 +126,8 @@ def start_operators():
         operator.start()
 
 
-def simulate_call_center():
-    with open('./data/input.txt', 'r') as input_file:
+def simulate_call_center(input_file_path):
+    with open(input_file_path, 'r') as input_file:
         initialize_operators(input_file)
         initialize_callers(input_file)
 
@@ -139,4 +140,4 @@ if __name__ == '__main__':
     operators = []
     callers = Queue()
 
-    simulate_call_center()
+    simulate_call_center(sys.argv[1])
