@@ -22,7 +22,8 @@ class Operator(Thread):
             self.take_a_break()
 
     def handle_caller(self, caller):
-        print(f'{self.name} answered a call from {caller.name} categorized as {caller.call_category}...')
+        print(
+            f'{self.name} answered a call from {caller.name} categorized as {caller.call_category}...')
 
         if caller.call_category == 'customer_service':
             call_duration = 0.3
@@ -36,7 +37,8 @@ class Operator(Thread):
 
         sleep(call_duration)
 
-        print(f'{self.name} finished talking to {caller.name} after {round(call_duration, 1)} second(s).')
+        print(
+            f'{self.name} finished talking to {caller.name} after {round(call_duration, 1)} second(s).')
 
         self.work_duration += call_duration
 
